@@ -1,6 +1,6 @@
 package com.empreendapp.service
 
-import com.empreendapp.model.BusinessClient
+import com.empreendapp.model.Client
 import com.empreendapp.repository.ClientRepository
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
@@ -12,25 +12,25 @@ class ClientService{
     @Inject
     private lateinit var repository: ClientRepository
 
-    fun getClientById(id: Long): Optional<BusinessClient> {
+    fun getClientById(id: Long): Optional<Client> {
         return repository.findById(id)
     }
 
-    fun getAllClients(): MutableIterable<BusinessClient> {
+    fun getAllClients(): MutableIterable<Client> {
         return repository.findAll()
     }
 
-    fun getAllClientsByBusinessName(businessName: String): List<BusinessClient> {
+    fun getAllClientsByBusinessName(businessName: String): List<Client> {
         //return repository.findAllByBusinessName(businessName)
         return repository.findAll().filter { client -> client.businessName == businessName }
     }
 
-    fun addClient(businessClient: BusinessClient): BusinessClient {
-        return repository.save(businessClient)
+    fun addClient(client: Client): Client {
+        return repository.save(client)
     }
 
-    fun updateClient(businessClient: BusinessClient): BusinessClient {
-        return repository.update(businessClient)
+    fun updateClient(client: Client): Client {
+        return repository.update(client)
     }
 
     fun deleteClient(id: Long) {

@@ -4,11 +4,10 @@ import com.empreendapp.listeners.ClientListener
 import javax.persistence.Entity
 import javax.persistence.EntityListeners
 import javax.persistence.GenerationType
-import javax.persistence.Table
 
 @Entity
 @EntityListeners(ClientListener::class)
-data class BusinessClient(
+data class Client(
 
     @javax.persistence.Id
     @javax.persistence.Column(name = "id", nullable = false)

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 import jakarta.inject.Inject
 
 @MicronautTest
-class MicroappTest {
+class MymicroappTest {
 
     @Inject
     lateinit var application: EmbeddedApplication<*>

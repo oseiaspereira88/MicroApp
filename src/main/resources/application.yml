@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: microapp
+    name: mymicroapp
   server:
     port: 8081
   router:
@@ -18,7 +18,7 @@ micronaut:
       - access: isAnonymous()
         pattern: /swagger-ui/**
       - access: isAnonymous()
-        pattern: /microapp/**
+        pattern: /mymicroapp/**
       - access: isAnonymous()
         pattern: /clients/**
 datasources:

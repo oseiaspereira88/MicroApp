@@ -1,14 +1,15 @@
 package com.empreendapp.controller
 
-import com.empreendapp.model.BusinessClient
+import com.empreendapp.model.Client
 import com.empreendapp.service.ClientService
+import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 import jakarta.inject.Inject
 
 @Controller("/clients")
-class BusinessClientController {
+class ClientController {
 
     @Inject
     private lateinit var service: ClientService
@@ -35,7 +36,11 @@ class BusinessClientController {
 
     @Produces(MediaType.APPLICATION_JSON)
     @Post("/create")
-    fun create(@Body client: BusinessClient): HttpResponse<Any> {
+    fun create(@Body client: Client, request: HttpRequest<String>): HttpResponse<Any> {
+
+        println("Request body: ${request.body.get() ?: null}")
+        println("Request formdata: ${request.body.get() ?: null}")
+
         return HttpResponse.created(service.addClient(client))
     }
 
@@ -43,7 +48,7 @@ class BusinessClientController {
     @Post("/edit/{id}")
     fun edit(
         @PathVariable id: String,
-        @Body updatedClient: BusinessClient
+        @Body updatedClient: Client
     ): HttpResponse<Any> {
         val oldClient = service.getClientById(id.toLong())
         return if (oldClient.isPresent) {

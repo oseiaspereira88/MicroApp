@@ -1,2 +1,2 @@
-rootProject.name = "microapp"
+rootProject.name = "mymicroapp"
 
